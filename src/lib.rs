@@ -11,8 +11,8 @@ mod field_as_string;
 /// A `Result` alias where the `Err` case is `jup_ag::Error`.
 pub type Result<T> = std::result::Result<T, Error>;
 
-const QUOTE_API_URL: &str = "https://quote-api.jup.ag/v4"; // Reference: https://quote-api.jup.ag/v4/docs/static/index.html
-const PRICE_API_URL: &str = "https://price.jup.ag/v1"; // Reference: https://quote-api.jup.ag/docs/static/index.html
+const QUOTE_API_URL: &str = "https://quote-api.jup.ag/v6"; // Reference: https://quote-api.jup.ag/v4/docs/static/index.html
+const PRICE_API_URL: &str = "https://price.jup.ag/v6"; // Reference: https://quote-api.jup.ag/docs/static/index.html
 
 /// The Errors that may occur while using this crate
 #[derive(thiserror::Error, Debug)]
