@@ -135,7 +135,7 @@ pub async fn price(
     ui_amount: f64,
 ) -> Result<Response<Price>> {
     let url =
-        format!("{PRICE_API_URL}/price?id={input_mint}&vsToken={output_mint}&amount={ui_amount}");
+        format!("{PRICE_API_URL}/price?ids={input_mint}&vsToken={output_mint}");
     maybe_jupiter_api_error(reqwest::get(url).await?.json().await?)
 }
 
