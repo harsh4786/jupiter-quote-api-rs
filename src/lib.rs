@@ -47,7 +47,7 @@ pub struct Response<T> {
 #[derive(Clone, Debug, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Price {
-    #[serde(with = "field_as_string", rename = "ids")]
+    #[serde(with = "field_as_string", rename = "id")]
     pub input_mint: Pubkey,
     #[serde(rename = "mintSymbol")]
     pub input_symbol: String,
