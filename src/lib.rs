@@ -58,6 +58,26 @@ pub struct Price {
     pub price: f64,
 }
 
+#[derive(Debug, Deserialize, Clone)]
+#[allow(non_snake_case)]
+#[allow(dead_code)]
+pub struct JupApiData {
+    pub data: HashMap<String, PriceInfo>,
+    timeTaken: f64,
+}
+
+#[derive(Debug, Deserialize, Clone)]
+#[allow(non_snake_case)]
+#[allow(dead_code)]
+pub struct PriceInfo {
+    id: String,
+    mintSymbol: String,
+    vsToken: String,
+    vsTokenSymbol: String,
+    pub price: f64,
+}
+
+
 #[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Quote {
