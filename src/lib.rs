@@ -152,11 +152,11 @@ where
 pub async fn price(
     input_mint: Pubkey,
     output_mint: Pubkey,
-    ui_amount: f64,
-) -> Result<JupApiData> {
+) -> Result<PriceInfo> {
     let url =
         format!("{PRICE_API_URL}/price?ids={input_mint}&vsToken={output_mint}");
-    Ok(reqwest::get(url).await?.json::<JupApiData>().await?)
+    let price_info = reqwest::get(url).await?.json::<JupApiData>().await?.data.get(&input_mint.to_string()).ok_or(Error::JupiterApi("No price found".to_string()))?.to_owned();
+    Ok(price_info)
 }
 
 #[derive(Default)]
