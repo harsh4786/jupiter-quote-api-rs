@@ -152,13 +152,11 @@ where
 pub async fn price(
     input_mint: Pubkey,
     output_mint: Pubkey,
-) -> Result<HashMap<Pubkey, PriceInfo>> {
-    let mut price_map = HashMap::new();
+) -> Result<(Pubkey, PriceInfo)> {
     let url =
         format!("{PRICE_API_URL}/price?ids={input_mint}&vsToken={output_mint}");
     let price_info = reqwest::get(url).await?.json::<JupApiData>().await?.data.get(&input_mint.to_string()).ok_or(Error::JupiterApi("No price found".to_string()))?.to_owned();
-    price_map.insert(input_mint, price_info);
-    Ok(price_map)
+    Ok((input_mint, price_info))
 }
 
 #[derive(Default)]
