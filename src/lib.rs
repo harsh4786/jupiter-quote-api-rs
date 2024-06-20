@@ -153,10 +153,10 @@ pub async fn price(
     input_mint: Pubkey,
     output_mint: Pubkey,
     ui_amount: f64,
-) -> Result<Response<Price>> {
+) -> Result<JupApiData> {
     let url =
         format!("{PRICE_API_URL}/price?ids={input_mint}&vsToken={output_mint}");
-    maybe_jupiter_api_error(reqwest::get(url).await?.json().await?)
+    Ok(reqwest::get(url).await?.json::<JupApiData>().await?)
 }
 
 #[derive(Default)]
